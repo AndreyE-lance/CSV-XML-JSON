@@ -23,7 +23,7 @@ public class Main {
         //list.forEach(e-> System.out.println(e.toString()));
         String json = listToJson(list);
         //System.out.println(json);
-        writeString(json);
+        writeString(json,"task1_result.json ");
 
     }
 
@@ -43,7 +43,7 @@ public class Main {
         return list;
     }
 
-    private static String listToJson(List<Employee> list){
+    public static String listToJson(List<Employee> list){
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         Type listType = new TypeToken<List<Employee>>() {}.getType();
@@ -51,8 +51,8 @@ public class Main {
         return json;
     }
 
-    private static boolean writeString(String string){
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("task1_result.json"))){
+    public static boolean writeString(String string, String fileName){
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName))){
             bufferedWriter.write(string);
             return true;
         }catch (IOException ex){
